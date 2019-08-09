@@ -1,5 +1,5 @@
 -module(cards).
--export([make_deck/0, shuffle/1, can_stack/2]).
+-export([make_deck/0, shuffle/1, can_stack/2, split_deck/1]).
 
 -record(card, {color, value}).
 
@@ -20,6 +20,17 @@ shuffle(List) when is_list(List) ->
     Prefixed = [{rand:uniform(), Item} || Item <- List],
     % It then sorts the list of tuples, and discards the random value for a shuffled list
     [Out || {_, Out} <- lists:sort(Prefixed)].
+
+%% @doc helper function for split_deck/1, discards remaining items if the deck size isn't divisible by 5
+split_deck(Cards, Buffer) when length(Cards) < 5 ->
+    Buffer;
+split_deck(Cards, Buffer) ->
+    {First5, Rest} = lists:split(5, Cards),
+    split_deck(Rest, [First5 | Buffer]).
+
+%% @doc splits the deck into 8 subdecks of 5 cards each
+split_deck(Cards) when is_list(Cards), length(Cards) == 40 ->
+    split_deck(Cards, []).
 
 %% @doc checks if two cards can be stacked, where Card2 is the card that will be placed on top of Card1
 can_stack(Card1, Card2) ->
