@@ -14,7 +14,7 @@ The program will do so in the following steps:
     2. Otherwise finish
 
 ## Why Shenzhen Solitaire, why not &lt;insert other solitaire here&gt;?
-Simple, because it has relatively few cards in play (37 compared to 52), and because the entire board is visible at all times. 
+Simple, because it has relatively few cards in play (40 compared to 52), and because the entire board is visible at all times. 
 There's no deck to draw from, and no cards are turned over.
 
 ## What's the point of this program?

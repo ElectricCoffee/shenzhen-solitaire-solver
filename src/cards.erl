@@ -8,7 +8,7 @@ make_deck() ->
     % The three available colours
     Colors = [red, green, black],
     % Each colour/suit has the cards 1-9 + 3 dragons
-    Values = lists:seq(1, 9) ++ [dragon, dragon, dragon],
+    Values = lists:seq(1, 9) ++ [dragon, dragon, dragon, dragon],
     % There's also a special flower card which isn't a dragon and isn't red, green, or black
     Flower = #card{color = flower, value = flower},
     Deck = [#card{color = Color, value = Value} || Color <- Colors, Value <- Values],
