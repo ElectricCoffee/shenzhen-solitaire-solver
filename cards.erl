@@ -25,15 +25,14 @@ shuffle(List) when is_list(List) ->
 can_stack(Card1, Card2) ->
     #card{color = Color1, value = Value1} = Card1,
     #card{color = Color2, value = Value2} = Card2,
-    if 
-        % dragons can never stack
+    if  % dragons can never stack
         (Value1 == dragon) or (Value2 == dragon) -> false;
         % flowers can't either
         (Value1 == flower) or (Value2 == flower) -> false;
         % same colours also can't stack
         Color1 == Color2 -> false;
         % value 2 must be one less than value 1
-        Value1 /= Value2 - 1 -> false;
+        Value1 - 1 /= Value2 -> false;
         % otherwise, card 2 can be stacked on top of card 1
         true -> true
     end.
