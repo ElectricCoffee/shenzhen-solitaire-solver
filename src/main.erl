@@ -26,4 +26,8 @@ test() ->
     false = cards:can_stack(G2, B2),
     false = cards:can_stack(G3, R4),
 
+    Deck = cards:make_deck(),
+    Piles = cards:split_deck(Deck),
+    true = lists:all(fun(X) -> X == 5 end, lists:map(fun length/1, Piles)),
+
     io:format("Tests passed!").
